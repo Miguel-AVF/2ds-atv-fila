@@ -9,9 +9,9 @@ namespace Hospital
     class Paciente : Pessoa
     {
         //Dados
-        public bool Preferencial;
+        public bool Preferencial; //verdadeiro ou falso
 
-        public Paciente(string nome, int idade)//Criando variaveis
+        public Paciente(string nome, int idade)
         {
             Nome = nome;
             Idade = idade;
