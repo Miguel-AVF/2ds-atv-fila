@@ -60,6 +60,8 @@ namespace Hospital
                     Console.WriteLine("\nPressione qualquer tecla para voltar ao menu...");
                     Console.ReadKey();
                 }
+
+                Console.Clear(); //limpa a tela
             }
         }
     }
