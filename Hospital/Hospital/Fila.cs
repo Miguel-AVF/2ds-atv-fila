@@ -15,7 +15,7 @@ namespace Hospital
         {
             if (PacienteNum >= 100)
             {
-                Console.WriteLine("Fila cheia!"); //se a fila estiver cheia retorna a tela inicial
+                Console.WriteLine("Fila cheia!"); //se a fila estiver cheia volta pra tela inicial
                 return;
             }
 
