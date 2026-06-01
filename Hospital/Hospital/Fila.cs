@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,7 +43,7 @@ namespace Hospital
                     fila[i] = fila[i - 1];
                 }
 
-                fila[posicao] = paciente;
+                fila[posicao] = paciente; //junta a posoção com o paciente
             }
             else
             {
@@ -65,8 +66,18 @@ namespace Hospital
                 Console.WriteLine("\n--- LISTA DE PACIENTES ---");
                 for (int i = 0; i < PacienteNum; i++)              //mostra os dados do paciente
                 {
-                    string tipo = fila[i].Preferencial ? "[PREFERENCIAL]" : "[NORMAL]";     // ? e : funciona como if e else
-                    Console.WriteLine("Posição {0} \t| Nome: {1,-15} \t| Idade: {2} \t| {3}",   //-15 espaçamento entre as informações
+                    string tipo;
+
+                    if (fila[i].Preferencial == true)  //vai mostrar o tipo de paciente
+                    {
+                        tipo = "[PREFERENCIAL]";
+                    }
+                    else
+                    {
+                        tipo = "[NORMAL]";
+                    }    
+                 
+                    Console.WriteLine("Posição {0} \t| Nome: {1,-15} \t| Idade: {2} \t| {3}",   //-15 da um espaçp entre as informações
                     i, fila[i].Nome, fila[i].Idade, tipo);
                 }
             }
@@ -85,7 +96,7 @@ namespace Hospital
                 // Move todos os restantes uma posição para a frente
                 for (int i = 0; i < PacienteNum - 1; i++)
                 {
-                    fila[i] = fila[i + 1];
+                    fila[i] = fila[i + 1]; //faz essa movimentação
                 }
 
                 fila[PacienteNum - 1] = null; // Limpa a última posição que sobrou / null significa que esta vazil
@@ -104,11 +115,11 @@ namespace Hospital
             }
 
             Listar(); // Mostra a lista pra escolher de que vai trocar as informações
-            Console.Write("\nDigite o número da posição do paciente que deseja alterar: ");
 
+            Console.Write("\nDigite o número da posição do paciente que deseja alterar: ");
             int posicao = int.Parse(Console.ReadLine());
 
-            if (posicao >= 0 && posicao < PacienteNum)
+            if (posicao >= 0 && posicao < PacienteNum) //se o numero digitado bater faz a alteração
             {
                 Console.Write("Novo Nome (Atual: " + fila[posicao].Nome + "): ");  //altera o nome
                 string novoNome = Console.ReadLine();
